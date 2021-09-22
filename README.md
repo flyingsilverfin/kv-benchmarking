@@ -40,8 +40,8 @@ To use SpeeDB, change the comments to use the second dependency:
         "//dependencies/tools:speedb-rocksdb-jni"
 ```
 
+### Configuration
 
+The configuration for the benchmark itself is in `benchmark/MixedBenchmark.java`
 
-
-
-
+The configuration for the storage layer is in `transaction/RocksDatabase.java`
