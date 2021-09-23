@@ -81,22 +81,18 @@ public class MixedBenchmark {
     private void benchmark_operations(RocksDatabase db, ByteArrayGenerator arrayGenerator) throws RocksDBException {
         Random actionGenerator = new Random(0);
         int evaluations = 100_000;
-        int puts = 0;
         int gets = 0;
         int getValues = 0;
-        int seeksAndIterates = 0;
         long iterateValues = 0;
         Instant start = Instant.now();
         for (int i = 0; i < evaluations; i++) {
             int action = actionGenerator.nextInt(8);
             switch (action) {
                 case 0:
-                    puts++;
                     putRandomValues(db, arrayGenerator);
                     break;
                 case 1:
                 case 2:
-                    gets++;
                     getValues += doGet(db, arrayGenerator);
                     break;
                 case 3:
@@ -104,7 +100,6 @@ public class MixedBenchmark {
                 case 5:
                 case 6:
                 case 7:
-                    seeksAndIterates++;
                     iterateValues += doSeekAndIterate(db, arrayGenerator);
                     break;
                 default:
